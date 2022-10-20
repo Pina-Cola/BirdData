@@ -6,9 +6,12 @@
 from flask import Flask, request
 import psycopg2
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
 FLASK_APP=app
+CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/bundle/<nest>", methods=['GET'])
 def bundle(nest):
