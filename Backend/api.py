@@ -48,9 +48,10 @@ def start():
             list.append({"id": row[0], "place": row[1],"maps_link": row[2]})
             print(row[0])
 
+        list.reverse()
         # return the list nests in json format
         return {
-            'nests': tuple(list)
+            'nests': list
         }
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
