@@ -33,11 +33,21 @@ def start():
         cur.execute("""SELECT nest_id, place,link FROM DW_nests""")
         nests = cur.fetchall()
         
+          
+        #dictionary.add(nests.pop())
         cur.close()
         
+        list = []
+        end = len(nests) - 1
+        
+        for i in range(0, end):
+            row = nests.pop()
+            list.append({"id": row[0], "place": row[1],"maps_link": row[2]})
+            print(row[0])
+            
         # return the list nests in json format
         return {
-            'nests': nests
+            'nests': list
         }
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
